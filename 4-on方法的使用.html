@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //使用on方法，统一了所有的事件设置方式(重点内容，必须要会)
+      //1 使用on方法进行基本事件设置
+//      $("#box").on("click",function () {
+//        console.log("我是box的点击事件");
+//      });
+      
+      //2 使用on进行多个事件的设置
+      //$("#box").on("click mouseenter mouseleave",function () {
+      //  console.log("我是box的事件");
+      //})
+      
+      //$("#box").on({
+      //  click:function () {
+      //    console.log("我是box的点击事件");
+      //  },
+      //  mouseenter: function () {
+      //    console.log("我是box的移入事件");
+      //  },
+      //  mouseleave: function () {
+      //    console.log("我是box的移出事件");
+      //  }
+      //})
+      
+      //3 进行事件委托设置
+      //注意：使用on进行事件委托的设置时与delegate的参数位置不一样
+      //参数1：事件类型名
+      //参数2：要让内部的哪些子元素进行执行事件(选择器)
+      //参数3：事件处理程序
+      $("#box").on("click","p",function () {
+        console.log("我是box内部的p标签");
+      });
+      
+      
+      
+      //点击按钮，给box中进行动态的元素创建
+      $("#crt").click(function () {
+        $("#box").append("<p>我是动态创建的p标签</p>");
+      })
+    });
+  </script>
+</head>
+<body>
+<button id="crt">创建p标签放入到box中</button>
+<div id="box">
+  <span>我是span</span>
+  <p>我是box中原有的p标签</p>
+</div>
+
+</body>
+</html>
